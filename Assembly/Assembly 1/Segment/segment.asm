@@ -104,6 +104,6 @@ result: resw 1          ; Result değişkeninin değeri daha hesaplanmadığı i
 						; Olduğu için 1 tane word ayırdık.
 						
 ;
-; Bunların yanında iki tane de kullanıma açık ve pek bir işlevi olmaya 2 segment daha var, bunlar FS ve GS segmentleri
+; Bunların yanında iki tane de kullanıma açık ve pek bir işlevi olmaya 2 segment daha var, bunlar ES, FS ve GS segmentleri
 ; Bu iki segment'in CS, DS ve SS gibi özellikleri yoktur. İsteğe bağlı kullanım içindirler.
 ;
