@@ -53,20 +53,22 @@ mov bx, ax
 
 jmp Label1
 
-; Varsayalım ki Label1 label'inin RAM'^deki adresi 0x00000000, çünkü programın başı orası.
-; Label'den sonraki kod satırı, "mov ax, 0x05"'in RAM'deki addresi hala 0x00000000'dır, çünkü label
+; Varsayalım ki Label1 label'inin RAM'deki adresi 0x0000, çünkü programın başı orası.
+; Unutmayın ki buradaki adresler 0x00000000 değil 0x0000'dır çünkü 16 bitlik sistem kullanıyoruz yani
+; adresleyebileceğimiz en büyük sayı 16 bitlik bir sayıdır.
+; Label'den sonraki kod satırı, "mov ax, 0x05"'in RAM'deki addresi hala 0x0000'dır, çünkü label
 ; RAM'de bir yer tutmaz, gerçek bir değeri yoktur
 
-; Bundan sonraki kod satırının, "mov bx, ax", RAM'deki adresi ise 0x00000004 varsayalım.
-; Programı başlattığımızda IP 0x00000000'dır, bir sonraki kod satırı okur. İlk MOV instruction'unu
+; Bundan sonraki kod satırının, "mov bx, ax", RAM'deki adresi ise 0x0004 varsayalım.
+; Programı başlattığımızda IP 0x0000'dır, bir sonraki kod satırı okur. İlk MOV instruction'unu
 ; çalıştırır ve AX'e 0x05 değerini koyar. Daha sonra CPU, IP'ye 0x04 ekler.
 ; 0x04 eklemesinin sebebi, 16 bitlik MOV Komutunun RAM'de 4 byte büyüklüğünde olmasıdır.
 
-; Şimdi IP 0x00000004'dür, CPU burada bulunan "mov bx, ax" komutunu çalıştırır. ve daha sonra IP'ye 
+; Şimdi IP 0x0004'dür, CPU burada bulunan "mov bx, ax" komutunu çalıştırır. ve daha sonra IP'ye 
 ; bir kere daha 0x04 ekler.
-; Şimdi jmp Label1 komutuna gelir. Bizim assembler'ımız yani compiler'ımız Label1'i 0x00000000 ile yani
-; Label1'in temsil ettiği yer ile değiştirir ve bu komudu jmp 0x00000000 yapar
+; Şimdi jmp Label1 komutuna gelir. Bizim assembler'ımız yani compiler'ımız Label1'i 0x0000 ile yani
+; Label1'in temsil ettiği yer ile değiştirir ve bu komudu jmp 0x0000 yapar
 
-; Daha sonra CPU, IP registerına 0x00000000 değerini koyar ve buraya zıplayarak buradaki kodu çalıştırmaya
+; Daha sonra CPU, IP registerına 0x0000 değerini koyar ve buraya zıplayarak buradaki kodu çalıştırmaya
 ; çalışır. Böylece programımızın en başına dönmüş oluruz. 
 
